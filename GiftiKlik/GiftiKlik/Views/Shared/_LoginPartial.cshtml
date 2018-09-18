@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    var hello = "Hello ";
+    if (User.IsInRole("Admin"))
+    {
+        hello += "Admin ";
+    }
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        if (User.IsInRole("Admin"))
+        {
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown mr-3">
+                    <a href="/admin/index" class="nav-link  text-info dropdown-toggle" data-toggle="dropdown" >
+                        <i class="fa fa-user"></i> @User.Identity.GetUserName()
+                    </a>
+                    <div class="dropdown-menu bg-light">
+                        <a href="/admin/index" class="nav-link dropdown-item text-justify pr-5 pl-5 ">
+                            <i class="fa fa-user-circle"></i> Дашбоард
+                        </a>
+                        <a class="nav-link dropdown-item text-justify pr-5 pl-5" href="javascript:document.getElementById('logoutForm').submit()">
+                            <i class="fa fa-user-times "></i>Одјава
+                        </a>
+                    </div>
+                </li>
+                
+            </ul>
+        }
+        else
+        {
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown mr-3">
+                    <a href="/account/profiledetails" class="nav-link  text-info dropdown-toggle" data-toggle="dropdown" >
+                        <i class="fa fa-user"></i> @User.Identity.GetUserName()
+                    </a>
+                    <div class="dropdown-menu bg-light">
+                        <a href="/account/profiledetails" class="nav-link dropdown-item text-justify pr-5 pl-5 ">
+                            <i class="fa fa-user-circle"></i> Профил
+                        </a>
+                        <a class="nav-link dropdown-item text-justify pr-5 pl-5 " href="javascript:document.getElementById('logoutForm').submit()">
+                            <i class="fa fa-user-times"></i>Одјава
+                        </a>
+                    </div>
+                </li>
+               
+            </ul>
+        }
+    }
+ }
+    else
+    {
+            <ul class="nav navbar-nav navbar-right">
+                @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+                <li class="nav-item">
+                    <a id="registerLink" href="/account/register" class="nav-link">Регистрирај се</a>
+                </li>
+                @*<li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+                <li class="nav-item">
+                    <a id = "loginLink" href="/account/login" class="nav-link">Најави се</a>
+                </li>
+            </ul>
+}
+
+
+
+
+           
+
+
+

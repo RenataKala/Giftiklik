@@ -1,0 +1,239 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@*CAPTION SECTION*@
+<section>
+    <div class="container-fluid">
+        <div class="caption row pb-5 pt-2">
+            <div id="captionOne" class="rounded col-sm-4 text-center py-3">
+                <h1 class="display-4">ГИФТИ КЛИК</h1>
+                <p class=" font-italic lead ">
+                    Наједноставниот начин за праќање подароци онлајн
+                </p>
+                <a href="/account/login" class="mt-4 btn btn-info btn-lg">Логирај се</a>
+            </div>
+            <div id="captionTwo" class="rounded col-sm-4 text-center py-3">
+                <h1 class="display-4">КАКО?</h1>
+                <p class="lead  font-italic ">Ќе предложите место кое го сакаат и ќе напишете убава порака</p>
+                <a href="#" class="mt-5 btn btn-info btn-lg">Дознај повеќе..</a>
+            </div>
+            <div id="captionThree" class="rounded col-sm-4 text-center py-3">
+                <h1 class="display-4">ПРИЈАТЕЛИ</h1>
+                <p class="lead font-italic">Ресторани, хотели,кафе барови, пабови, бутици, книжари, цвеќари, бела техника...</p>
+                <a href="/home/friends" class="mt-5 btn btn-info btn-lg">Дознај повеќе..</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*ICONS*@
+<section>
+    <div id="icons" class="container">
+        <div class="row">
+            <div class="home-icons col-md-4 mb-4 text-center">
+                <i class="fa fa-gift mb-2"></i>
+                <h3>Гифти ваучер</h3>
+
+            </div>
+            <div class="home-icons col-md-4 mb-4 text-center">
+                <i class="fa fa-heart mb-2"></i>
+                <h3>Гифти љубов</h3>
+            </div>
+            <div class="home-icons col-md-4 mb-4 text-center">
+                <i class=" fa fa-comment mb-2"></i>
+                <h3>Гифти картичка</h3>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@*SEND SECTION*@
+<section class="py-3 bg-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 align-self-center">
+                <h1 class="pb-5 text-center">ПОДАРИ</h1>
+                <p class="pb-5">Имате пријател кој слави нешто - роденден, матура, свадба .... а сте далеку и неможете да честитате лично? Искористете ја можноста која Ви ја нуди ГИФТИКЛИК и израдувајте ги вашите пријатели на уникатен начин </p>
+                <a href="@Url.Action("SendingForm","Home")" class="btn btn-info btn-lg btn-block">Прати ГИФТИ</a>
+            </div>
+            <div class="col-md-6">
+                <img src="~/Content/images/love-heart-romantic-gift.jpg" class="img-fluid img-thumbnail" alt="">              
+            </div>
+        </div>
+    </div>
+</section>
+@*VIDEO SECTION*@
+<section id="video-play">
+    <div class="dark-overlay">
+        <div class="row">
+            <div class="col">
+                <div class="container m-5">
+                    <a href="#"
+                       class="video"
+                       data-video="https://www.youtube.com/embed/ZbZSe6N_BXs"
+                       data-toggle="modal"
+                       data-target="#videoModal">
+                        <i class="fa fa-play"></i>
+                    </a>
+                    <h1>Погледнете како функционира ГифтиКлик</h1>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*CARDs SECTION*@
+<section id="gallery" class="py-5 bg-light">
+    <div class="container">
+        <h1 class="text-center">Гифти Картички</h1>
+        <p class="text-center">Дезени за секоја пригода. Одберете и пратете картичка со порака за комплетен подарок на вашиот славеник</p>
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <img src="~/Content/images/cards/graduation_hat.jpg" class="img-fluid mb-3">
+            </div>
+            <div class="col-md-3">
+                <img src="~/Content/images/cards/hb.jpg" class="img-fluid mb-3">
+            </div>
+            <div class="col-md-3">
+                <img src="~/Content/images/cards/thank_you.jpg" class="img-fluid mb-3">
+            </div>
+            <div class="col-md-3">
+                <img src="~/Content/images/cards/you_rock.jpg" class="img-fluid mb-3">
+            </div>
+        </div>
+        <h1 class="text-center"><a href="@Url.Action("Index","Card")" class="btn btn-danger btn-lg">Повеќе..</a></h1>
+    </div>
+</section>
+
+@*FAQ*@
+<section id="faq" class="p-5 bg-secondary text-white">
+    <div class="container">
+        <h1 class="text-center">Најчесто поставувани прашања</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="accordion">
+                    <div class="card my-1">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    Што е Гифти Ваучер?
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse">
+                            <div class="card-body text-dark">
+                                Онлајн гифт картичка кој може да се замени и за пари.Испраќачот бира локал каде предлага да се искористи ваучерот.Сепак примателот ја има слободата  да одбере каде би сакал да го искористи ваучерот доколку прдложената опција не му се допаѓа.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                    Како да испратам Гифти ваучер?
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseTwo" class="collapse">
+                            <div class="card-body text-dark">
+                                Ја пополнувате формата <a href="/home/sendingform/">тука</a>.Потребно е само да одберете локал/бизнис кај што сакате да се искористат средствата, да одредите сума на која сакате да биде подарокот и емаил на примателот.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card my-1">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    Како го добиваат Гифти ваучерот?
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseThree" class="collapse">
+                            <div class="card-body text-dark">
+                                Може да биде испратен по емаил или на адреса на примателот во испринтана верзија со бар код од ваучерот .
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="accordion">
+                    <div class="card my-1">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                    Како би изгледал емаилот на примателот?
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFour" class="collapse">
+                            <div class="card-body text-dark">
+                                <a href="#">Тука погледнете еден пример</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                    Дали морам да го искористам Гифти во предложениот бизнис?
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFive" class="collapse">
+                            <div class="card-body text-dark">
+                                Не.Но доколку испраќачот добро ве познава, веројатно ќе ви се допадне изборот.Во спротивно, може да ја изберете опцијата за промена на бизнис.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card my-1">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                    Дали треба да доплатам плус од сумата што ќе ја одберам за Гифти ваучерот?
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseSix" class="collapse">
+                            <div class="card-body text-dark">
+                                Ќе видиме :D
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*VIDEO MODAL*@
+<div class="modal fade" id="videoModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                <iframe src="" height="350" width="400" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,97 @@
+﻿@model GiftiKlik.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Профил";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="action" class="py-4 mb-4 bg-info">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 mr-auto">
+                <a href="/home/index" class="btn btn-light btn-block">
+                    <i class="fa fa-arrow-left"></i> Назад на почетна
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#passwordModal">
+                    <i class="fa fa-lock"></i> Промени лозинка
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-danger btn-block">
+                    <i class="fa fa-remove"></i> Избриши профил
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Мој профил</h4>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <h3>Мои ваучери : </h3>
+                            </div>
+                            <div class="form-group">
+                                <h3>Историја : </h3>
+                            </div>
+                            <div class="form-group">
+                                <h3>Емаил : </h3>
+                            </div>
+                            <div class="form-group">
+                                <h3>Лозинка : </h3>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+             
+                <img src="~/Content/images/team/avatar.png" alt="" class="d-block img-fluid mb-3">
+                <button class="btn btn-primary btn-block">Стави слика</button>
+                <button class="btn btn-danger btn-block">Избриши слика</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
+
+<!-- PASSWORD MODAL -->
+<div class="modal fade" id="passwordModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Промени лозинка</h5>
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Лозинка</label>
+                        <input type="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Промени лозинка</label>
+                        <input type="password" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Затвори</button>
+                <button class="btn btn-primary" data-dismiss="modal">Промени</button>
+            </div>
+        </div>
+    </div>
+</div>

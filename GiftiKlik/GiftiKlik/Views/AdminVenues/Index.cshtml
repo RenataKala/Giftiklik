@@ -1,0 +1,128 @@
+﻿@model IEnumerable<GiftiKlik.Models.VenuesViewModel>
+
+@{
+    ViewBag.Title = "Админ-Локали";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row  py-3">
+    <h2 class="col-md-8 text-center">Локали</h2>
+    <div class="col-md-4">
+        <a href="@Url.Action("Index","Admin")" class="btn btn-info btn-lg">Назад до админ</a>
+    </div>
+   
+</div>
+
+
+<div id="venueDetails" class="col-md-6">
+
+</div>
+
+<div class="container">
+        <div class="row">
+
+            <div class="col">
+                <table border="1" class="table table-striped" ">
+                    <tr>
+                        <th>Име</th>
+                        <th>Улица</th>
+                        <th>Број</th>
+                        <th>Телефон</th>
+                        <th>Град</th>
+                        <th>Категорија</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in @Model)
+                    {
+                        <tr id="Row_@item.VenueID">
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Street
+                            </td>
+                            <td>
+                                @item.StreetNumber
+                            </td>
+                            <td>
+                                @item.Phone
+                            </td>
+                            <td>
+                                @item.CityName
+                            </td>
+                            <td>
+                                @item.VenueType
+                            </td>
+                            <td>
+
+                                <button onclick="editVenue(@item.VenueID)" class="btn btn-warning">Измени</button>
+                            </td>
+                            <td>
+                                <button onclick="delVenue(@item.VenueID)" class="btn btn-danger">Избриши</button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+         </div>
+    </div>
+
+<script>
+     function editVenue(id) {
+        $.ajax({
+            url: '@Url.Action("Details", "AdminVenues")'+'/' + id,
+            type: "GET",
+            success: function (response) {
+                $("#venueDetails").html(response);
+            }
+        });
+      }
+
+    
+     function delVenue(id) {
+            $.ajax({
+            url: '@Url.Action("Delete","AdminVenues")'+'/'+id ,
+                type: "Post",
+                data:{ id: id },
+               
+                success: function (response) { 
+                    $("#Row_" + id).html(" ");
+                    alert("Избришано");
+                              
+            }
+        });
+    }
+
+    function GenerateRow(model) {
+        $("#Row_" + model.VenueID).html(`
+                    
+                    <td>
+                        `+ model.Name + `
+                    </td>
+                    <td>
+                        `+ model.Street + `
+                    </td>
+ <td>
+                        `+ model.StreetNumber + `
+                    </td>
+ <td>
+                        `+ model.Phone + `
+                    </td>
+ <td>
+                        `+ model.CityID + `
+                    </td>
+ <td>
+                        `+ model.VenueTypeID + `
+                    </td>
+                     <td>
+
+                            <a href="#" onclick="editVenue(` + model.VenueID + `)" class="btn btn-info">Измени</a>
+                        </td>
+                        <td>
+                            <a onclick="delVenue(`+ model.VenueID + `)" class="btn btn-info">Избриши</a>
+                        </td>                    
+             `);
+    }
+</script>
+

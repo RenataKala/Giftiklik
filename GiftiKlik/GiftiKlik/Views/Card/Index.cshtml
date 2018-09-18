@@ -1,0 +1,35 @@
+﻿@model IEnumerable<GiftiKlik.Models.CardViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center pt-5">
+    Гифти картички
+</h2>
+<div class="row py-5">
+    @foreach (var item in Model)
+    {
+    <div class="col-md-3">
+        <img id="chosenCard" class="img-fluid my-3" src="@Url.Content(item.CardImagePAth)" />
+
+        @*@Html.ActionLink("Одбери ", "Edit")*@
+        <a href="#" onclick="pickCard(@item.CardID)" class="btn-link text-dark ">Одбери</a>
+    </div>
+             
+    }
+</div>
+
+<script>
+    function pickCard(id) {
+        var card = $("#chosenCard").val()
+        $("#card").html(`<img src="card"`)
+
+
+    }
+   
+
+</script>
+
+

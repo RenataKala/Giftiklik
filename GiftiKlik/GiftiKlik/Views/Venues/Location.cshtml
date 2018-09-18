@@ -1,0 +1,38 @@
+﻿
+@model List<GiftiKlik.Models.VenuesViewModel>
+
+@{
+    ViewBag.Title = "Location";
+}
+
+
+
+<div class="container">
+    <div class="row py-5">
+        <div class=" col-md-4">
+            <input id="city" type="text" class="form-control form-control-lg" placeholder="Внеси град">
+        </div>
+        <div class="col-md-4">
+            <a onclick="searchByCity()" class="btn btn-info btn-lg">Пребарај...</a>
+        </div>
+    </div>
+</div>
+
+<div id="test"></div>
+<script>
+    function searchByCity() {
+        var cityInput = $("#city").val();
+        
+            $.ajax({
+            url: '@Url.Action("Locations","Venues")'+'?location=' + cityInput,
+            type: "GET",
+            success: function (response) {
+                $("#test").html(response);
+            }
+        });
+    }
+
+</script>
+
+
+

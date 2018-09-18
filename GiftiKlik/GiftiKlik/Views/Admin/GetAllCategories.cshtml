@@ -1,0 +1,60 @@
+﻿@model IEnumerable<GiftiKlik.Models.VenueTypeVM>
+
+@{
+    ViewBag.Title = "Категории";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row  py-3">
+    <h2 class="col-md-8 text-center">Категории</h2>
+    <div class="col-md-4">
+        <a href="@Url.Action("Index","Admin")" class="btn btn-info btn-lg">Назад до админ</a>
+    </div>
+
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+          Реден бр.
+        </th>
+        <th>
+            Категорија
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="Row_@item.VenueTypeID">
+        <td>
+            @Html.DisplayFor(modelItem => item.VenueTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+
+            @Html.ActionLink("Смени име", "Details", new { /* id=item.PrimaryKey */ }) |
+            <button onclick="deleteType(@item.VenueTypeID)" class="btn btn-danger">Избриши</button>
+        </td>
+    </tr>
+}
+
+</table>
+
+<script>
+
+    function deleteType(id) {
+        $.ajax({
+            url: '@Url.Action("DeleteCategory","Admin")'+'/' + id,
+            type: "Post",
+            data: { id: id },
+
+            success: function (response) {
+                $("#Row_" + id).html(" ");
+                alert("Категоријата е избришана");
+            }
+        });
+    }
+</script>

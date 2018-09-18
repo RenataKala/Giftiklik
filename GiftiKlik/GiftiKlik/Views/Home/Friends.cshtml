@@ -1,0 +1,52 @@
+﻿
+<section class=" text-muted">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/Content/images/11.jpeg" alt="" class="img-fluid mb-3 rounded-circle pt-3">
+            </div>
+            <div class="col-md-6">
+               
+                <p class="h4 pt-5">Гифти пријатели се сите локали каде што може да се искористи ваучерот.Одберете вие или оставете славеникот сам да одбере </p>
+                <div class="d-flex flex-row">
+                    <div class="p-4 align-self-start">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <div class="p-4 align-self-end">
+                        <h4>Сакате да ги рагледате сите?</h4>
+                        <a href="@Url.Action("GetAll","Venues")" class="btn btn-secondary btn-block">Сите Гифти Пријатели</a>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row">
+                    <div class="p-4 align-self-start">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <div class="p-4 align-self-end">
+                      <h4>Сакате конкретна локација?</h4>
+                        <a href="@Url.Action("Location","Venues")" class="btn btn-secondary btn-block ">Пребарај по локација</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</section>
+@Html.Action("CategoryMenuPartial", "VenueType")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

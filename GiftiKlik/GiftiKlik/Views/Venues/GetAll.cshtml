@@ -1,0 +1,34 @@
+﻿@model List<GiftiKlik.Models.VenuesViewModel>
+
+@{
+    ViewBag.Title = "Пријатели";
+
+}
+
+<h4 class="py-3 col">Листа на сите Гифти пријатели каде што може да искористи гифти ваучерот</h4>
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in @Model)
+    {
+        <div id="div_@item.VenueID" class="col-md-3 text-center ">
+            <img class="img-fluid" src="~/Content/images/2.jpeg" />
+            <h3> @item.Name   @item.CityName</h3>
+                                  
+            <a href="@Url.Action("Details","Venues",new { id = item.VenueID})"   class="btn btn-info mb-3">Детали</a>
+         
+
+        </div>
+
+}
+      
+
+    </div>
+</div>
+
+@Html.ActionLink("Назад", "Friends", "Home")
+
+
+
+

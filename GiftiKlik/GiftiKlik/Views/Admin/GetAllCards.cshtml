@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GiftiKlik.Models.CardViewModel>
+
+@{
+    ViewBag.Title = "Картички";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row  py-3">
+    <h2 class="col-md-8 text-center">Картички</h2>
+    <div class="col-md-4">
+        <a href="@Url.Action("Index","Admin")" class="btn btn-info btn-lg">Назад до админ</a>
+    </div>
+
+</div>
+@*upload card*@
+<form class="py-5 text-capitalize text-center" action="UploadCard" method="post" enctype="multipart/form-data">
+
+    <label for="file">Прикачи картичка :</label>
+    <input type="file" name="file" id="file" />
+
+    <input type="submit" value="Прикачи" />
+</form>
+
+<div class="container">
+    <div class="row">
+
+    @foreach (var item in Model)
+     {
+        <div id="DIV_@item.CardID" class="col-md-3">
+            <img class="img-fluid img-fluid" src="@Url.Content(item.CardImagePAth)" />
+            <button onclick="deleteCard(@item.CardID)" class="mt-1 mb-3 btn btn-info">Смени</button>
+            <button onclick="deleteCard(@item.CardID)" class="mt-1 mb-3 btn btn-danger">Избриши</button>
+        </div>
+     }
+     
+     </div>
+</div>
+
+
+<script>
+
+    function deleteCard(id) {
+        $.ajax({
+            url: '@Url.Action("DeleteCard","Admin")' + '/' + id,
+            data: { id: id },
+            success: function (response) {
+                $("#DIV_" + id).html(" ");
+                alert("Картичката е избришана");
+            }
+        })
+    }
+</script>
+

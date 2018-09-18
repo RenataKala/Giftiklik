@@ -1,0 +1,231 @@
+﻿@model GiftiKlik.Models.VenuesViewModel
+
+@{
+    ViewBag.Title = "Админ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="py-3 text-center">@ViewBag.Title</h2>
+
+@*BUTTONS*@
+<section id="action" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addVenueModal">
+                    <i class="fa fa-plus"></i> Додај локал
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
+                    <i class="fa fa-plus"></i> Додај категорија
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addCardModal">
+                    <i class="fa fa-plus"></i> Додај картичка
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@*BOXES*@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center bg-primary text-white mb-3">
+                <div class="card-body">
+                    <h3>ЛОКАЛИ</h3>
+                    <h1 class="display-4">
+                        <i class="fa fa-pencil"></i> 
+                    </h1>
+                    <a href="@Url.Action("Index","AdminVenues")" class="btn btn-outline-light btn-lg">Погледни</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center bg-success text-white mb-3">
+                <div class="card-body">
+                    <h3>КАТЕГОРИИ</h3>
+                    <h1 class="display-4">
+                        <i class="fa fa-folder-open-o"></i> 
+                    </h1>
+                    <a href="@Url.Action("GetAllCategories","Admin")" class="btn btn-outline-light btn-lg">Погледни</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center bg-warning text-white mb-3">
+                <div class="card-body">
+                    <h3>КАРТИЧКИ</h3>
+                    <h1 class="display-4">
+                        <i class="fa fa-heart"></i> 
+                    </h1>
+                    <a href="@Url.Action("GetAllCards","Admin")" class="btn btn-outline-light btn-lg">Погледни</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*VENUE MODAL*@ 
+<div class="modal fade" id="addVenueModal">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Додал локал</h5>
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                @*<form>*@
+                    <div class="form-group">
+                        <label for="title">Име</label>
+                        <input id="name" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Улица</label>
+                        <input id="street" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Број</label>
+                        <input id="streetnumber" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Телефон</label>
+                        <input id="phone" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Град</label>
+                        <input id="city" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Категорија </label>
+                        <input id="type" type="text" class="form-control">
+                        @*<div class="form-group">
+                          
+                                @Html.DropDownListFor(x => Model.VenueType, new SelectList(Model.Types, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Country" })
+                                @Html.ValidationMessageFor(x => Model.VenueType, "", new { @class = "text-danger" })
+                            </div>*@
+                        </div>
+
+                      
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Слика</label>
+                        <input type="file" class="form-control-file">
+                        <small class="form-text text-muted">Max Size 3mb</small>
+                    </div>
+
+                @*</form>*@
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Затвори</button>
+                <button class="btn btn-primary" onclick="addVenue()" data-dismiss="modal">Зачувај</button>
+            </div>
+        </div>
+    </div>
+
+
+@*CATEGORY MODAL*@
+<div class="modal fade" id="addCategoryModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">Додај категорија</h5>
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="title">Име на категорија</label>
+                        <input id="category" type="text" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Затвори</button>
+                <button onclick="addType()" class="btn btn-success" data-dismiss="modal">Зачувај</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*CARD MODAL*@
+<div class="modal fade" id="addCardModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white">
+                <h5 class="modal-title">Додај картичка</h5>
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="title">Внеси патека на сликата</label>
+                        <input id="cardpath" type="text" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" data-dismiss="modal">Затвори</button>
+                <button onclick="addCard()" class="btn btn-success" data-dismiss="modal">Зачувај</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+     function addType() {
+        var type = $("#category").val();
+         var data = { Type: type };
+
+          $.ajax({
+            url: '@Url.Action("AddType","Admin")',
+                type: "Post",
+                data:data,
+              
+            success: function (response) {
+                alert("Категорија успешно додадена");
+            }
+        });
+    }
+    function addCard() {
+        var cardpath = $("#cardpath").val();
+
+        var data = { CardImagePAth: cardpath };
+          $.ajax({
+            url: '@Url.Action("AddCard","Admin")',
+                type: "Post",
+                data:data,
+                
+            success: function (response) {
+                alert("Картичка успешно додадена");
+            }
+        });
+    }
+
+    function addVenue() {
+        var name = $("#name").val();
+        var street = $("#street").val();
+        var streetnum = $("#streetnumber").val();
+        var phone = $("#phone").val();
+        var city = $("#city").val();
+        var type = $("#type").val();
+        var data = { Name: name, Street: street, StreetNumber: streetnum, CityID:city, Phone:phone, VenueTypeID:type};
+          $.ajax({
+            url: '@Url.Action("AddVenue","Admin")',
+                type: "Post",
+                data:data,
+                dataType: "text/html",
+            success: function (response) {
+
+            }
+        });
+    }
+   
+
+</script>
+

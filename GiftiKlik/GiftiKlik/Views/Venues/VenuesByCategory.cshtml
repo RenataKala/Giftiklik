@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GiftiKlik.Models.VenuesViewModel>
+
+@if (!Model.Any())
+{
+    <h2 class="py-5 text-center text-danger"> Нема локали од оваа категорија</h2>
+}
+else
+{
+    <table class="table text-dark py-3">
+        <tr>
+            <th>
+                Име
+            </th>
+
+            <th>
+                Град
+            </th>
+            <th>
+                Категорија
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+    {
+
+        <tr class="">
+            <td class="text-uppercase">
+                @item.Name
+            </td>
+
+            <td class="text-uppercase">
+                @item.CityName
+            </td>
+            <td>
+                @item.VenueType
+            </td>
+            <td class="text-capitalize">
+
+                @Html.ActionLink("Одбери", "Details") |
+                @Html.ActionLink("Посети веб страна", "Details")
+
+            </td>
+        </tr>
+}
+    </table>
+}
+
