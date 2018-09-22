@@ -80,50 +80,51 @@
             </div>
             <div class="modal-body">
                 @*<form>*@
-                    <div class="form-group">
-                        <label for="title">Име</label>
-                        <input id="name" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Улица</label>
-                        <input id="street" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Број</label>
-                        <input id="streetnumber" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Телефон</label>
-                        <input id="phone" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Град</label>
-                        <input id="city" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Категорија </label>
-                        <input id="type" type="text" class="form-control">
-                        @*<div class="form-group">
-                          
-                                @Html.DropDownListFor(x => Model.VenueType, new SelectList(Model.Types, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Country" })
-                                @Html.ValidationMessageFor(x => Model.VenueType, "", new { @class = "text-danger" })
-                            </div>*@
-                        </div>
+                <div class="form-group">
+                    <label for="title">Име</label>
+                    <input id="name" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="title">Улица</label>
+                    <input id="street" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="title">Број</label>
+                    <input id="streetnumber" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="title">Телефон</label>
+                    <input id="phone" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="title">Град</label>
+                    <input id="city" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="title">Категорија </label>
+                    <input id="type" type="text" class="form-control">
+                    @*<div class="form-group">
 
-                      
-                    </div>
-                    <div class="form-group">
-                        <label for="file">Слика</label>
-                        <input type="file" class="form-control-file">
-                        <small class="form-text text-muted">Max Size 3mb</small>
-                    </div>
+                    @Html.DropDownListFor(x => Model.VenueType, new SelectList(Model.Types, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Country" })
+                    @Html.ValidationMessageFor(x => Model.VenueType, "", new { @class = "text-danger" })
+                </div>*@
+                </div>
 
-                @*</form>*@
+
             </div>
+            <div class="form-group">
+                <label for="file">Слика</label>
+                <input type="file" class="form-control-file">
+                <small class="form-text text-muted">Max Size 3mb</small>
+            </div>
+
+            @*</form>*@
+
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-dismiss="modal">Затвори</button>
                 <button class="btn btn-primary" onclick="addVenue()" data-dismiss="modal">Зачувај</button>
             </div>
+        </div>
         </div>
     </div>
 

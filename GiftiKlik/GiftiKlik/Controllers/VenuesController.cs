@@ -80,6 +80,26 @@ namespace GiftiKlik.Controllers
             return View(model);
         }
 
+        public ActionResult VenuesByCategory(string category)
+        {
+            var venues = _venuesRepository.SearchVenueByType(category)
+                .Select(t => new VenuesViewModel
+                {
+                    VenueID = t.VenueID,
+                    Name = t.Name,
+                    Street = t.Street,
+                    StreetNumber = t.StreetNumber,
+                    Phone = t.Phone,
+                    CityName = t.City.CityName,
+                    VenueType = t.VenueType.Type
+
+                }).ToList();
+
+            return PartialView("VenuesByCategory", venues);
+
+            
+        }
+
       
 
 
